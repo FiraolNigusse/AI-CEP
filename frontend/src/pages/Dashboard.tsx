@@ -10,14 +10,16 @@ import {
   Sparkles
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import DashboardOverview from '../components/DashboardOverview';
 import EmailGenerator from '../components/EmailGenerator';
 import { cn } from '../utils/cn';
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState('generator');
+  const [activeTab, setActiveTab] = useState('overview');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const menuItems = [
+    { id: 'overview', label: 'Overview', icon: LayoutDashboard },
     { id: 'generator', label: 'Email Generator', icon: Send },
     { id: 'history', label: 'Past Sequences', icon: History },
     { id: 'credits', label: 'Billing/Credits', icon: CreditCard },
@@ -126,6 +128,18 @@ const Dashboard = () => {
 
            <div className="p-8 md:p-12 pb-32">
              <AnimatePresence mode="wait">
+               {activeTab === 'overview' && (
+                 <motion.div
+                   key="overview"
+                   initial={{ opacity: 0, scale: 0.98 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   exit={{ opacity: 0, scale: 1.02 }}
+                   transition={{ duration: 0.2 }}
+                 >
+                   <DashboardOverview onNavigate={setActiveTab} />
+                 </motion.div>
+               )}
+
                {activeTab === 'generator' && (
                  <motion.div
                    key="generator"
@@ -138,7 +152,7 @@ const Dashboard = () => {
                  </motion.div>
                )}
 
-               {activeTab !== 'generator' && (
+               {activeTab !== 'generator' && activeTab !== 'overview' && (
                  <motion.div
                    key="placeholder"
                    initial={{ opacity: 0 }}
