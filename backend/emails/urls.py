@@ -1,4 +1,6 @@
 from django.urls import path
+from .views import EmailGenerateView
 
-# Placeholder URLs for the emails app
-urlpatterns = []
+urlpatterns = [
+    path('generate/', EmailGenerateView.as_view(), name='email_generate'),
+]
