@@ -1,4 +1,6 @@
 from django.urls import path
+from .views import BuyCreditsView
 
-# Placeholder URLs for the billing app
-urlpatterns = []
+urlpatterns = [
+    path('buy-credits/', BuyCreditsView.as_view(), name='buy_credits'),
+]
