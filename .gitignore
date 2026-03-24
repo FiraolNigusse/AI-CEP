@@ -46,3 +46,15 @@ venv.bak/
 # OS
 .DS_Store
 Thumbs.db
+
+# Node
+node_modules/
+dist/
+.npm/
+
+# Vite
+.vite/
+
+# Environment
+.env.local
+.env.*.local
