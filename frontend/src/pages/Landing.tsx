@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Mail, Zap, Target, ArrowRight, ShieldCheck, MailPlus, Sparkles, 
-  ChevronRight, CheckCircle2, Moon, Sun, Github, Twitter
+  Zap, Target, ArrowRight, ShieldCheck, MailPlus, Sparkles, 
+  CheckCircle2, Moon, Sun
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { SiGithub, SiX } from 'react-icons/si';
+import { motion } from 'framer-motion';
 import { cn } from '../utils/cn';
 
 const LandingPage = () => {
@@ -14,7 +15,6 @@ const LandingPage = () => {
   const [demoOutput, setDemoOutput] = useState('');
 
   // Auto-typing for demo
-  const samplePersona = "SaaS Founder at AI-CEP interested in scaling outreach";
   const sampleOutput = `Subject: Quick question about AI-CEP's growth strategy?
 
 Hi [Name], 
@@ -321,8 +321,8 @@ As a founder scaling AI-CEP, I noticed you're doing some great things in the col
              </div>
              <div className="space-y-3">
                <h4 className="font-bold text-slate-900 dark:text-white">Connect</h4>
-               <a href="#" className="flex items-center gap-2 hover:text-indigo-600"><Twitter className="w-4 h-4" /> Twitter</a>
-               <a href="#" className="flex items-center gap-2 hover:text-indigo-600"><Github className="w-4 h-4" /> Github</a>
+               <a href="#" className="flex items-center gap-2 hover:text-indigo-600"><SiX className="w-4 h-4" /> Twitter</a>
+               <a href="#" className="flex items-center gap-2 hover:text-indigo-600"><SiGithub className="w-4 h-4" /> Github</a>
              </div>
           </div>
         </div>
