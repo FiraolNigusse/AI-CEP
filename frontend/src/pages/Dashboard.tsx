@@ -4,7 +4,7 @@ import {
   Send, 
   History, 
   CreditCard, 
-  Settings, 
+  Settings as SettingsIcon, 
   LogOut, 
   Menu, 
   Sparkles
@@ -12,6 +12,8 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import DashboardOverview from '../components/DashboardOverview';
 import EmailGenerator from '../components/EmailGenerator';
+import Billing from '../components/Billing';
+import Settings from '../components/Settings';
 import { cn } from '../utils/cn';
 
 const Dashboard = () => {
@@ -23,7 +25,7 @@ const Dashboard = () => {
     { id: 'generator', label: 'Email Generator', icon: Send },
     { id: 'history', label: 'Past Sequences', icon: History },
     { id: 'credits', label: 'Billing/Credits', icon: CreditCard },
-    { id: 'settings', label: 'Account Settings', icon: Settings },
+    { id: 'settings', label: 'Account Settings', icon: SettingsIcon },
   ];
 
   return (
@@ -152,7 +154,31 @@ const Dashboard = () => {
                  </motion.div>
                )}
 
-               {activeTab !== 'generator' && activeTab !== 'overview' && (
+               {activeTab === 'credits' && (
+                 <motion.div
+                   key="credits"
+                   initial={{ opacity: 0, scale: 0.98 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   exit={{ opacity: 0, scale: 1.02 }}
+                   transition={{ duration: 0.2 }}
+                 >
+                   <Billing />
+                 </motion.div>
+               )}
+
+               {activeTab === 'settings' && (
+                 <motion.div
+                   key="settings"
+                   initial={{ opacity: 0, scale: 0.98 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   exit={{ opacity: 0, scale: 1.02 }}
+                   transition={{ duration: 0.2 }}
+                 >
+                   <Settings />
+                 </motion.div>
+               )}
+
+               {activeTab !== 'generator' && activeTab !== 'overview' && activeTab !== 'credits' && activeTab !== 'settings' && (
                  <motion.div
                    key="placeholder"
                    initial={{ opacity: 0 }}
